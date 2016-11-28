@@ -17,7 +17,7 @@ public class CreateObjects : MonoBehaviour
     void Start()
     {
         //This needs to be scraped from server at some point
-        url = "http://172.25.52.116:8000/sounds.json";
+        url = "http://172.25.54.188:8000/sounds.json";
         soundObjects = new List<GameObject>();
         soundThreshold = 1000;
     }
