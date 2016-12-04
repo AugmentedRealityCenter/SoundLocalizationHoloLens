@@ -10,14 +10,25 @@ public class SpeechText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        faceUser();
+    }
+
+    /// <summary>
+    /// Makes sure that the text is always facing the user
+    /// </summary>
+    private void faceUser()
+    {
         var headPosition = Camera.main.transform.position;
-        var gazeDirection = Camera.main.transform.forward*5;
+        var gazeDirection = Camera.main.transform.forward * 5;
 
         transform.position = headPosition + gazeDirection;
-        //transform.position += new Vector3(-1, 0, 0);
         transform.TransformDirection(gazeDirection);
     }
 
+    /// <summary>
+    /// Update the 3D text
+    /// </summary>
+    /// <param name="text"></param>
     public void updateText(string text)
     {
         GetComponent<TextMesh>().text = text;

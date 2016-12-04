@@ -31,10 +31,11 @@ public class MicrophoneManager : MonoBehaviour
         lengthLimit = 20;
         speechText = GameObject.Find("SpeechText");
 
-        /* TODO: DEVELOPER CODING EXERCISE 3.a */
+
 
         // 3.a: Create a new DictationRecognizer and assign it to dictationRecognizer variable.
         dictationRecognizer = new DictationRecognizer();
+
 
         // 3.a: Register for dictationRecognizer.DictationHypothesis and implement DictationHypothesis below
         // This event is fired while the user is talking. As the recognizer listens, it provides text of what it's heard so far.
@@ -74,13 +75,9 @@ public class MicrophoneManager : MonoBehaviour
         // 3.a: Add condition to check if dictationRecognizer.Status is Running
         if (hasRecordingStarted && !Microphone.IsRecording(deviceName) && dictationRecognizer.Status == SpeechSystemStatus.Running)
         {
-            // Reset the flag now that we're cleaning up the UI.
-            //hasRecordingStarted = false;
-
-            // This acts like pressing the Stop button and sends the message to the Communicator.
             // If the microphone stops as a result of timing out, make sure to manually stop the dictation recognizer.
             // Look at the StopRecording function.
-            //SendMessage("RecordStop");
+            SendMessage("RecordStop");
         }
 
         if(!speechText.Equals(null))
@@ -179,7 +176,7 @@ public class MicrophoneManager : MonoBehaviour
         // The default timeout with initial silence is 5 seconds.
         if (cause == DictationCompletionCause.TimeoutExceeded)
         {
-            //Microphone.End(deviceName);
+            Microphone.End(deviceName);
 
             speechText.GetComponent<TextMesh>().text = "Speech has ended.";
             textSoFar.Remove(0, textSoFar.ToString().Length);
@@ -198,14 +195,4 @@ public class MicrophoneManager : MonoBehaviour
 
         speechText.GetComponent<TextMesh>().text = error + "\nHRESULT: " + hresult;
     }
-
-    //private IEnumerator RestartSpeechSystem(KeywordManager keywordToStart)
-    //{
-    //    while (dictationRecognizer != null && dictationRecognizer.Status == SpeechSystemStatus.Running)
-    //    {
-    //        yield return null;
-    //    }
-
-    //    keywordToStart.StartKeywordRecognizer();
-    //}
 }
