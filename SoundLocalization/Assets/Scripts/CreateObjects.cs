@@ -12,14 +12,19 @@ public class CreateObjects : MonoBehaviour
     private string url;
     private float soundThreshold;
     private GameObject tempSphere;
-
+    private MicrophoneManager microphoneManager;
+    private AudioSource dictationAudio;
 
     void Start()
     {
         //This needs to be scraped from server at some point
-        url = "http://172.25.54.188:8000/sounds.json";
+        url = "http://172.25.52.54:8000/sounds.json";
+        //StartCoroutine(getURL());
         soundObjects = new List<GameObject>();
         soundThreshold = 1000;
+        dictationAudio = gameObject.GetComponent<AudioSource>();
+        microphoneManager = GetComponent <MicrophoneManager>();
+        dictationAudio.clip = microphoneManager.StartRecording();
     }
 
     void Update()
@@ -34,6 +39,39 @@ public class CreateObjects : MonoBehaviour
         }
         //Go through JSON information and generate holograms
         generateSoundObjects();
+
+        if (microphoneManager.speechText.GetComponent<TextMesh>().text.Equals("Speech has ended."))
+        {
+            microphoneManager = GetComponent<MicrophoneManager>();
+            dictationAudio.clip = microphoneManager.StartRecording();
+        }
+
+        //microphoneManager.StartRecording();
+    }
+
+    /// <summary>
+    /// Retrieves the url address of the raspberry pi
+    /// </summary>
+    /// <returns>string representing the url</returns>
+    IEnumerator getURL()
+    {
+        string shelvURL = "http://shelvar.com/ip.php";
+        WWWForm form = new WWWForm();
+        //form.AddField("command", "sounds.json");
+        www = new WWW(shelvURL);
+
+        yield return www;
+
+        if (www.error == null)
+        {
+            url = www.text;
+            Debug.Log(url);
+        }
+        else
+        {
+            Debug.Log("SHELVAR WWW Error: " + www.error);
+        }
+        
     }
 
     /// <summary>
