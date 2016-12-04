@@ -22,6 +22,8 @@ public class CreateObjects : MonoBehaviour
         //StartCoroutine(getURL());
         soundObjects = new List<GameObject>();
         soundThreshold = 1000;
+
+        //These three components are needed to record speech
         dictationAudio = gameObject.GetComponent<AudioSource>();
         microphoneManager = GetComponent <MicrophoneManager>();
         dictationAudio.clip = microphoneManager.StartRecording();
@@ -40,13 +42,13 @@ public class CreateObjects : MonoBehaviour
         //Go through JSON information and generate holograms
         generateSoundObjects();
 
+        //This will reset the microphone and dictationAudio if 5 seconds have passed without the user speaking. 
         if (microphoneManager.speechText.GetComponent<TextMesh>().text.Equals("Speech has ended."))
         {
             microphoneManager = GetComponent<MicrophoneManager>();
             dictationAudio.clip = microphoneManager.StartRecording();
         }
 
-        //microphoneManager.StartRecording();
     }
 
     /// <summary>

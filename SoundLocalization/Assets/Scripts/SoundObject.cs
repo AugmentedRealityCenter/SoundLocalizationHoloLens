@@ -24,9 +24,6 @@ public class SoundObject : MonoBehaviour
         timeAlive = 0;
         placed = false;
         originalPosition = new Vector3(0, 0, 0);
-        //var invisibile = Color.white;
-        //invisibile.a = 0;
-        //GetComponent<Renderer>().material.color = invisibile;
     }
 
     // Update is called once per frame
