@@ -1,0 +1,54 @@
+{
+	"current_frame": 2652,
+	"sounds": [{
+		"location": [0.938507, 0.130098, -0.275831],
+		"first_frame": 2586,
+		"last_frame": 2602,
+		"loudness": 757.715637
+	}, {
+		"location": [0.844000, -0.344500, -0.407600],
+		"first_frame": 2588,
+		"last_frame": 2588,
+		"loudness": 294.250275
+	}, {
+		"location": [-0.215800, 0.707650, 0.657533],
+		"first_frame": 2593,
+		"last_frame": 2601,
+		"loudness": 435.081665
+	}, {
+		"location": [0.018390, 0.891236, -0.369169],
+		"first_frame": 2594,
+		"last_frame": 2650,
+		"loudness": 561.855530
+	}, {
+		"location": [0.721822, 0.578453, -0.364794],
+		"first_frame": 2599,
+		"last_frame": 2607,
+		"loudness": 365.189087
+	}, {
+		"location": [0.707700, -0.407600, -0.574700],
+		"first_frame": 2609,
+		"last_frame": 2611,
+		"loudness": 390.645630
+	}, {
+		"location": [-0.462800, 0.626900, -0.626600],
+		"first_frame": 2625,
+		"last_frame": 2625,
+		"loudness": 291.896942
+	}, {
+		"location": [0.910193, 0.354445, -0.042352],
+		"first_frame": 2626,
+		"last_frame": 2652,
+		"loudness": 658.449036
+	}, {
+		"location": [0.862600, -0.123500, -0.490100],
+		"first_frame": 2633,
+		"last_frame": 2633,
+		"loudness": 298.945526
+	}, {
+		"location": [-0.830800, -0.545200, -0.110800],
+		"first_frame": 2648,
+		"last_frame": 2649,
+		"loudness": 501.114441
+	}]
+}

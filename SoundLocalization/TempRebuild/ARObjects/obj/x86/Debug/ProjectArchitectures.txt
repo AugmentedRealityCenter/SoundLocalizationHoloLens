@@ -1,0 +1,4 @@
+C:\Users\cschipper07\Documents\Unity Projects\ARObjects\TempRebuild\ARObjects\ARObjects.csproj;x86
+C:\Users\cschipper07\Documents\Unity Projects\ARObjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\cschipper07\Documents\Unity Projects\ARObjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+C:\Users\cschipper07\Documents\Unity Projects\ARObjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
