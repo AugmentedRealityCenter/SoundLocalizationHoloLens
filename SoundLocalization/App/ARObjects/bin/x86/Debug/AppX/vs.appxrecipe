@@ -16,7 +16,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>C630D69E78A2C74D4E6EB69D962E645668BE5F7CC4D3411DF693F2EA387EE298</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>BFF3202CE24BE376756DDCBCF9597D30AAE1450375142D90148C9CDF0C62F21A</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>SoundLocalization_1.0.0.0_x86__pzq3xp76mxafg</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>SoundLocalization_pzq3xp76mxafg!App</RegisteredUserModeAppID>
     <RegisteredPackageID>SoundLocalization</RegisteredPackageID>
@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-11-28T18:39:44.613</Modified>
+      <Modified>2016-12-04T21:40:31.603</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\bin\x86\Debug\ARObjects.exe">
       <PackagePath>entrypoint\ARObjects.exe</PackagePath>
-      <Modified>2016-11-28T18:39:24.491</Modified>
+      <Modified>2016-12-04T21:40:24.339</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -536,11 +536,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
-      <Modified>2016-11-28T18:27:43.062</Modified>
+      <Modified>2016-12-04T21:39:27.522</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\level0">
       <PackagePath>Data\level0</PackagePath>
-      <Modified>2016-11-28T18:27:42.261</Modified>
+      <Modified>2016-12-04T21:39:26.970</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>
@@ -548,35 +548,39 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\Resources\unity_builtin_extra">
       <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
-      <Modified>2016-11-28T18:27:44.324</Modified>
+      <Modified>2016-12-04T21:39:28.701</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
-      <Modified>2016-11-28T18:27:43.189</Modified>
+      <Modified>2016-12-04T21:39:27.659</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\resources.assets">
       <PackagePath>Data\resources.assets</PackagePath>
-      <Modified>2016-11-28T18:27:43.269</Modified>
+      <Modified>2016-12-04T21:39:27.941</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
-      <Modified>2016-11-28T18:27:43.683</Modified>
+      <Modified>2016-12-04T21:39:28.038</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\level0.resS">
       <PackagePath>Data\level0.resS</PackagePath>
-      <Modified>2016-11-28T18:27:42.261</Modified>
+      <Modified>2016-12-04T21:39:26.970</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\resources.assets.resS">
+      <PackagePath>Data\resources.assets.resS</PackagePath>
+      <Modified>2016-12-04T21:39:27.941</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\sharedassets0.assets.resS">
       <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
-      <Modified>2016-11-28T18:27:43.682</Modified>
+      <Modified>2016-12-04T21:39:28.038</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
-      <Modified>2016-11-28T18:27:58.502</Modified>
+      <Modified>2016-12-04T21:39:43.056</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\nativePlugins.txt">
       <PackagePath>Data\nativePlugins.txt</PackagePath>
-      <Modified>2016-11-28T18:27:58.503</Modified>
+      <Modified>2016-12-04T21:39:43.057</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.14393.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -596,43 +600,43 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-11-28T18:39:28.999</Modified>
+      <Modified>2016-12-04T21:40:25.523</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
-      <Modified>2016-11-28T18:39:35.497</Modified>
+      <Modified>2016-12-04T21:40:30.844</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\UnityEngine.Analytics.dll">
       <PackagePath>UnityEngine.Analytics.dll</PackagePath>
-      <Modified>2016-11-28T18:39:35.514</Modified>
+      <Modified>2016-12-04T21:40:30.848</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
-      <Modified>2016-11-28T18:39:35.584</Modified>
+      <Modified>2016-12-04T21:40:31.305</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\UnityEngine.HoloLens.dll">
       <PackagePath>UnityEngine.HoloLens.dll</PackagePath>
-      <Modified>2016-11-28T18:39:35.602</Modified>
+      <Modified>2016-12-04T21:40:31.313</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>
-      <Modified>2016-11-28T18:39:35.661</Modified>
+      <Modified>2016-12-04T21:40:31.366</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\UnityEngine.VR.dll">
       <PackagePath>UnityEngine.VR.dll</PackagePath>
-      <Modified>2016-11-28T18:39:35.684</Modified>
+      <Modified>2016-12-04T21:40:31.369</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Assembly-CSharp.dll">
       <PackagePath>Assembly-CSharp.dll</PackagePath>
-      <Modified>2016-11-28T18:39:34.812</Modified>
+      <Modified>2016-12-04T21:40:30.500</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Assembly-CSharp-firstpass.dll">
       <PackagePath>Assembly-CSharp-firstpass.dll</PackagePath>
-      <Modified>2016-11-28T18:39:34.816</Modified>
+      <Modified>2016-12-04T21:40:30.520</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\bin\x86\Debug\Core\ARObjects.exe">
       <PackagePath>ARObjects.exe</PackagePath>
-      <Modified>2016-11-28T18:39:44.597</Modified>
+      <Modified>2016-12-04T21:40:31.587</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
