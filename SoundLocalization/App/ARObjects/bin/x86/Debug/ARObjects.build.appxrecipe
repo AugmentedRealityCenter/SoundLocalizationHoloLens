@@ -424,6 +424,9 @@
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\level0.resS">
       <PackagePath>Data\level0.resS</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\resources.assets.resS">
+      <PackagePath>Data\resources.assets.resS</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\App\ARObjects\Data\sharedassets0.assets.resS">
       <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
     </AppxPackagedFile>

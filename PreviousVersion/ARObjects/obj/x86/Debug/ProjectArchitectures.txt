@@ -1,0 +1,4 @@
+C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\PreviousVersion\ARObjects\ARObjects.csproj;x86
+C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+C:\Users\cschipper07\Documents\Unity Projects\SoundLocalizationHoloLens\SoundLocalization\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86

@@ -18,6 +18,7 @@ public class NotificationObject : MonoBehaviour
         var headPosition = Camera.main.transform.position;
         var gazeDirection = Camera.main.transform.forward;
 
+        //Ensure the object is always in the middle of the user's screen
         transform.position = headPosition + gazeDirection;
         transform.TransformDirection(gazeDirection);
     }

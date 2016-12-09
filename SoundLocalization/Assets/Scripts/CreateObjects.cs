@@ -19,19 +19,20 @@ public class CreateObjects : MonoBehaviour
     {
         //This needs to be scraped from server at some point
         url = "http://172.25.52.54:8000/sounds.json";
-        //StartCoroutine(getURL());
         soundObjects = new List<GameObject>();
         soundThreshold = 1000;
 
         //These three components are needed to record speech
         dictationAudio = gameObject.GetComponent<AudioSource>();
-        microphoneManager = GetComponent <MicrophoneManager>();
+        microphoneManager = GetComponent<MicrophoneManager>();
         dictationAudio.clip = microphoneManager.StartRecording();
     }
 
     void Update()
     {
+        //Connects to the server and creates sound objects
         connectAndCreateObjects();
+
         //This will check to see if there is a hologram out of view
         //If there is, it will cause the notification object to point towards the hologram
         checkObjects();
@@ -39,18 +40,15 @@ public class CreateObjects : MonoBehaviour
         {
             notificationObject.transform.LookAt(tempSphere.transform);
         }
+
         //Go through JSON information and generate holograms
         generateSoundObjects();
 
         //This will reset the microphone and dictationAudio if 5 seconds have passed without the user speaking. 
-        if (microphoneManager.speechText.GetComponent<TextMesh>().text.Equals("Speech has ended."))
-        {
-            microphoneManager = GetComponent<MicrophoneManager>();
-            dictationAudio.clip = microphoneManager.StartRecording();
-        }
-
+        resetMicrophone();
     }
 
+    //TODO: Make this method word. Currently causes errors.
     /// <summary>
     /// Retrieves the url address of the raspberry pi
     /// </summary>
@@ -58,8 +56,6 @@ public class CreateObjects : MonoBehaviour
     IEnumerator getURL()
     {
         string shelvURL = "http://shelvar.com/ip.php";
-        WWWForm form = new WWWForm();
-        //form.AddField("command", "sounds.json");
         www = new WWW(shelvURL);
 
         yield return www;
@@ -109,7 +105,7 @@ public class CreateObjects : MonoBehaviour
                 //A sphere will not be created unless there is enough noise coming from that position
                 if (loudness > soundThreshold)
                 {
-                    if (!checkForSound(pos, firstFrameID))
+                    if (!checkForSound(firstFrameID))
                     {
                         createSphere(pos, firstFrameID);
                     }
@@ -168,8 +164,6 @@ public class CreateObjects : MonoBehaviour
         sphere.GetComponent<SoundObject>().setOriginalPosition(pos);
         sphere.GetComponent<SoundObject>().setFirstFrameID(firstFrameID);
         soundObjects.Add(sphere);
-
-       // Debug.Log("Sphere at POS: " + soundPos + "| Original Pos: " + pos);
     }
 
     /// <summary>
@@ -186,12 +180,12 @@ public class CreateObjects : MonoBehaviour
     /// <summary>
     /// Returns true if sound is found in list of existing sounds
     /// </summary>
-    /// <param name="pos">Position of sound</param>
+    /// <param name="firstFrameID">First frame sound was heard</param>
     /// <returns>
     /// True if sound is found in list of existing sounds
     /// False otherwise
     /// </returns>
-    private bool checkForSound(Vector3 pos, int firstFrameID)
+    private bool checkForSound(int firstFrameID)
     {
 
         foreach (GameObject o in soundObjects)
@@ -201,26 +195,22 @@ public class CreateObjects : MonoBehaviour
             {
                 return true;
             }
-
-            //Vector3 originalPosition = o.GetComponent<SoundObject>().getOriginlPosition();
-            //var x = originalPosition.x;
-            //var z = originalPosition.z;
-
-
-            ////Do not need to check 'y' because we set it to 0
-            //if ((x + 0.3f) >= pos.x && (x - 0.3f) <= pos.x)
-            //{
-            //    if ((z >= 0 && pos.z >= 0) || (z  <= 0 && pos.z <= 0))
-            //    {
-            //        //If found, reset timer on object.
-            //        o.GetComponent<SoundObject>().resetTimer();
-            //        return true;
-            //    }
-            //}
         }
 
 
         return false;
+    }
+
+    /// <summary>
+    /// Resets th eimcrophone is conditions require it to be reset
+    /// </summary>
+    private void resetMicrophone()
+    {
+        if (microphoneManager.speechText.GetComponent<TextMesh>().text.Equals("Speech has ended."))
+        {
+            microphoneManager = GetComponent<MicrophoneManager>();
+            dictationAudio.clip = microphoneManager.StartRecording();
+        }
     }
 
     ///<summary>
