@@ -14,9 +14,11 @@ public class CreateObjects : MonoBehaviour
     private GameObject tempSphere;
     private MicrophoneManager microphoneManager;
     private AudioSource dictationAudio;
+    private Vector3 speechBubblePos;
 
     void Start()
     {
+        speechBubblePos = Camera.main.transform.position;
         //This needs to be scraped from server at some point
         url = "http://172.25.52.54:8000/sounds.json";
         soundObjects = new List<GameObject>();
@@ -69,7 +71,7 @@ public class CreateObjects : MonoBehaviour
         {
             Debug.Log("SHELVAR WWW Error: " + www.error);
         }
-        
+
     }
 
     /// <summary>
@@ -191,7 +193,7 @@ public class CreateObjects : MonoBehaviour
         foreach (GameObject o in soundObjects)
         {
             //If object is found to already exist
-            if(firstFrameID == o.GetComponent<SoundObject>().getFirstFrameID())
+            if (firstFrameID == o.GetComponent<SoundObject>().getFirstFrameID())
             {
                 return true;
             }
@@ -228,5 +230,23 @@ public class CreateObjects : MonoBehaviour
         {
             Debug.Log("WWW Error: " + www.error);
         }
+    }
+
+    /// <summary>
+    /// Gets the location of the first object in the soundLocations array
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 getFirstPosition()
+    {
+        Vector3 returnPosition = Camera.main.transform.position;
+        if (objs != null)
+        {
+            //lists of all sounds, loudness values, and first frame IDs
+            List<Vector3> soundLocations = objs.getPositions();
+            if(soundLocations.ToArray().Length > 0)
+                returnPosition = soundLocations[0];
+           
+        }
+        return returnPosition;
     }
 }
