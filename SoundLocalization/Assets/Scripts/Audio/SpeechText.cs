@@ -13,6 +13,8 @@ public class SpeechText : MonoBehaviour {
     private bool middle;
     private bool top;
     private bool speechBubble;
+
+    private SoundObject soundObject;
     //Use this for initialization
 
    void Start () {
@@ -30,12 +32,19 @@ public class SpeechText : MonoBehaviour {
         faceUser();
     }
 
+    void fixText()
+    {
+        if(GetComponent<TextMesh>().text.Length > 50)
+        {
+
+        }
+    }
+
     /// <summary>
     /// Makes sure that the text is always facing the user
     /// </summary>
     private void faceUser()
     {
-        Debug.Log("AYY: " + createObjects.getFirstPosition());
         var headPosition = Camera.main.transform.position;
         var gazeDirection = Camera.main.transform.forward * 5;
 
@@ -58,19 +67,32 @@ public class SpeechText : MonoBehaviour {
             transform.position = temp + gazeDirection;
             transform.TransformDirection(gazeDirection);
         }
-        else if(speechBubble)
+        else if(speechBubble && soundObject == null) //If speech bubble is selected and a sound object exists
         {
-            Vector3 pos = createObjects.getFirstPosition();
-            if(pos.Equals(headPosition))
+            soundObject = createObjects.getFirstObject();
+            if(soundObject != null)
             {
-                Vector3 temp = new Vector3(headPosition.x - 1f, headPosition.y, headPosition.z);
-                transform.position = headPosition + gazeDirection;
+                transform.position = soundObject.transform.position;
+                Debug.Log("SOUNDOBJECT POSITION" + soundObject.transform.position);
             }
             else
             {
-                transform.position = pos;
+                Vector3 temp = new Vector3(headPosition.x - 1f, headPosition.y, headPosition.z);
+                transform.position = headPosition + gazeDirection;
+                transform.TransformDirection(gazeDirection);
             }
-            transform.TransformDirection(gazeDirection);
+            //Vector3 pos = createObjects.getFirstPosition();
+            //if(pos.Equals(headPosition))
+            //{
+            //    Vector3 temp = new Vector3(headPosition.x - 1f, headPosition.y, headPosition.z);
+            //    transform.position = headPosition + gazeDirection;
+            //}
+            //else
+            //{
+            //    transform.position = pos;
+            //}
+            //GetComponent<Renderer>().transform.LookAt(Camera.main.transform.position);
+            ////transform.TransformDirection(gazeDirection);
         }
     }
 

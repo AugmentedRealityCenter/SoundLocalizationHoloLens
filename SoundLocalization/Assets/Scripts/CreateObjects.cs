@@ -22,7 +22,7 @@ public class CreateObjects : MonoBehaviour
         //This needs to be scraped from server at some point
         url = "http://172.25.52.54:8000/sounds.json";
         soundObjects = new List<GameObject>();
-        soundThreshold = 1000;
+        soundThreshold = 2000;
 
         //These three components are needed to record speech
         dictationAudio = gameObject.GetComponent<AudioSource>();
@@ -204,7 +204,7 @@ public class CreateObjects : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets th eimcrophone is conditions require it to be reset
+    /// Resets the microphone if conditions require it to be reset
     /// </summary>
     private void resetMicrophone()
     {
@@ -248,5 +248,14 @@ public class CreateObjects : MonoBehaviour
            
         }
         return returnPosition;
+    }
+
+    public SoundObject getFirstObject()
+    {
+        if(soundObjects.Count>0)
+        {
+            return soundObjects[0].GetComponent<SoundObject>();
+        }
+        return null;
     }
 }
