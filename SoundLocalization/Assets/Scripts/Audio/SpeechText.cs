@@ -51,19 +51,18 @@ public class SpeechText : MonoBehaviour {
         if (bottom)
         {
 
-            Vector3 temp = new Vector3(headPosition.x - 1f, headPosition.y - 0.5f, headPosition.z);
+            Vector3 temp = new Vector3(headPosition.x, headPosition.y - 0.5f, headPosition.z);
             transform.position = temp + gazeDirection;
             transform.TransformDirection(gazeDirection);
         }
         else if (middle)
         {
-            Vector3 temp = new Vector3(headPosition.x - 1f, headPosition.y, headPosition.z);
             transform.position = headPosition + gazeDirection;
             transform.TransformDirection(gazeDirection);
         }
         else if (top)
         {
-            Vector3 temp = new Vector3(headPosition.x -1f, headPosition.y + 0.5f, headPosition.z);
+            Vector3 temp = new Vector3(headPosition.x, headPosition.y + 0.5f, headPosition.z);
             transform.position = temp + gazeDirection;
             transform.TransformDirection(gazeDirection);
         }
@@ -81,18 +80,7 @@ public class SpeechText : MonoBehaviour {
                 transform.position = headPosition + gazeDirection;
                 transform.TransformDirection(gazeDirection);
             }
-            //Vector3 pos = createObjects.getFirstPosition();
-            //if(pos.Equals(headPosition))
-            //{
-            //    Vector3 temp = new Vector3(headPosition.x - 1f, headPosition.y, headPosition.z);
-            //    transform.position = headPosition + gazeDirection;
-            //}
-            //else
-            //{
-            //    transform.position = pos;
-            //}
-            //GetComponent<Renderer>().transform.LookAt(Camera.main.transform.position);
-            ////transform.TransformDirection(gazeDirection);
+
         }
     }
 
