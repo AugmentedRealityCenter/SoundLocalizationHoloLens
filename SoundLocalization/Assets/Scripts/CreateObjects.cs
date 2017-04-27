@@ -208,11 +208,20 @@ public class CreateObjects : MonoBehaviour
     /// </summary>
     private void resetMicrophone()
     {
-        if (microphoneManager.speechText.GetComponent<TextMesh>().text.Equals("Speech has ended."))
+        if(microphoneManager != null)
         {
+            if (microphoneManager.speechText.GetComponent<TextMesh>().text.Equals("Speech has ended."))
+            {
+                microphoneManager = GetComponent<MicrophoneManager>();
+                dictationAudio.clip = microphoneManager.StartRecording();
+            }
+        } else
+        {
+            dictationAudio = gameObject.GetComponent<AudioSource>();
             microphoneManager = GetComponent<MicrophoneManager>();
             dictationAudio.clip = microphoneManager.StartRecording();
         }
+        
     }
 
     ///<summary>

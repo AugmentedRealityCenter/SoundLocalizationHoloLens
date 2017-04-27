@@ -30,7 +30,7 @@ public class SpeechText : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         updateLocation(GetComponent<TextMesh>().text);
-        
+        scale();
         faceUser();
     }
 
@@ -49,18 +49,18 @@ public class SpeechText : MonoBehaviour {
         {
 
             Vector3 temp = new Vector3(headPosition.x, headPosition.y - 0.5f, headPosition.z);
-            transform.position = temp + gazeDirection;
+            moveTowardsPosition(temp + gazeDirection);
             transform.TransformDirection(gazeDirection);
         }
         else if (middle)
         {
-            transform.position = headPosition + gazeDirection;
+            moveTowardsPosition(headPosition + gazeDirection);
             transform.TransformDirection(gazeDirection);
         }
         else if (top)
         {
             Vector3 temp = new Vector3(headPosition.x, headPosition.y + 0.5f, headPosition.z);
-            transform.position = temp + gazeDirection;
+            moveTowardsPosition(temp + gazeDirection);
             transform.TransformDirection(gazeDirection);
         }
         else if(speechBubble && soundObject == null) //If speech bubble is selected and a sound object exists
@@ -73,8 +73,8 @@ public class SpeechText : MonoBehaviour {
             }
             else
             {
-                Vector3 temp = new Vector3(headPosition.x - 1f, headPosition.y, headPosition.z);
-                transform.position = headPosition + gazeDirection;
+                moveTowardsPosition(headPosition + gazeDirection);
+                transform.TransformDirection(gazeDirection);
                 transform.TransformDirection(gazeDirection);
             }
 
@@ -125,6 +125,23 @@ public class SpeechText : MonoBehaviour {
             middle = false;
             top = false;
             speechBubble = true;
+        }
+    }
+
+    private void scale()
+    {
+         GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+         float distance = Vector3.Distance(mainCamera.transform.position, transform.position);
+         transform.localScale = new Vector3((0.01f * distance), (0.01f * distance), (0.01f * distance));
+    }
+
+    private void moveTowardsPosition(Vector3 target)
+    {
+        float distance = Vector3.Distance(transform.position, target);
+        if (distance > 0.5)
+        {
+            float speed = distance * distance + 1;
+            transform.position = Vector3.MoveTowards(transform.position, target, speed* Time.deltaTime);
         }
     }
 
