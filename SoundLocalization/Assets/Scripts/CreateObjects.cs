@@ -20,7 +20,7 @@ public class CreateObjects : MonoBehaviour
     {
         speechBubblePos = Camera.main.transform.position;
         //This needs to be scraped from server at some point
-        url = "http://172.25.52.54:8000/sounds.json";
+        url = "http://172.25.53.167:8000/sounds.json";
         soundObjects = new List<GameObject>();
         soundThreshold = 2000;
 

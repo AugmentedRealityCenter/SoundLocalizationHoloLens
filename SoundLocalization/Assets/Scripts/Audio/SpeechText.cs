@@ -13,11 +13,13 @@ public class SpeechText : MonoBehaviour {
     private bool middle;
     private bool top;
     private bool speechBubble;
+    private string currentText;
 
     private SoundObject soundObject;
     //Use this for initialization
 
    void Start () {
+        currentText = "Microphone is Recording";
         bottom = false;
         middle = true;
         top = false;
@@ -32,13 +34,8 @@ public class SpeechText : MonoBehaviour {
         faceUser();
     }
 
-    void fixText()
-    {
-        if(GetComponent<TextMesh>().text.Length > 50)
-        {
-
-        }
-    }
+    
+    
 
     /// <summary>
     /// Makes sure that the text is always facing the user

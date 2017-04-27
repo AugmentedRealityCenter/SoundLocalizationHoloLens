@@ -129,6 +129,43 @@ public class MicrophoneManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Resizes the text to fit on the user screen.
+    /// Resets the text if greater than three lines of text (210 characters) are on the screen 
+    /// </summary>
+    public string fixText(string text)
+    {
+        string tempText = text;
+        string finalText = "";
+        int lastSpaceIdx = 0;
+        int lastBaseIdx = 0;
+        if (tempText.Length >= 50)
+        {
+            for (int i = 1; !string.IsNullOrEmpty(tempText) && i < tempText.Length; i++)
+            {
+                if (tempText.Substring(i, 1).Equals(" "))
+                {
+                    lastSpaceIdx = i;
+                }
+                if (i % 70 == 0)
+                {
+                    finalText += tempText.Substring(lastBaseIdx, lastSpaceIdx - lastBaseIdx) + "\n";
+                    lastBaseIdx = lastSpaceIdx;
+                }
+            }
+            finalText += tempText.Substring(lastBaseIdx, tempText.Length - lastBaseIdx);
+            if (finalText.Length > 210)
+            {
+                finalText = tempText.Substring(lastBaseIdx, tempText.Length - lastBaseIdx);
+            }
+        }
+        else
+        {
+            finalText = tempText;
+        }
+        return finalText;
+    }
+
+    /// <summary>
     /// This event is fired while the user is talking. As the recognizer listens, it provides text of what it's heard so far.
     /// </summary>
     /// <param name="text">The currently hypothesized recognition.</param>
@@ -137,17 +174,8 @@ public class MicrophoneManager : MonoBehaviour
         // 3.a: Set DictationDisplay text to be textSoFar and new hypothesized text
         // We don't want to append to textSoFar yet, because the hypothesis may have changed on the next event
         
-        speechText.GetComponent<TextMesh>().text = textSoFar.ToString() + " " + text + "...";
-        if (textSoFar.ToString().Length > lengthLimit)
-        {
-            lengthLimit += 20;
-            textSoFar.Append("\n");
-            if(lengthLimit == 100)
-            {
-                textSoFar.Remove(0, textSoFar.ToString().Length);
-                lengthLimit = 0;
-            }
-        }
+        speechText.GetComponent<TextMesh>().text = fixText(textSoFar.ToString() + " " + text + "...");
+
     }
 
     /// <summary>
@@ -161,7 +189,7 @@ public class MicrophoneManager : MonoBehaviour
         textSoFar.Append(text + ". ");
 
         // 3.a: Set DictationDisplay text to be textSoFar
-        speechText.GetComponent<TextMesh>().text = textSoFar.ToString();
+        speechText.GetComponent<TextMesh>().text = fixText(textSoFar.ToString());
     }
 
     /// <summary>
