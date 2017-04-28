@@ -93,6 +93,7 @@ public class SoundObject : MonoBehaviour
         position = centerHit.point;
         transform.position = position;
         GetComponent<Renderer>().material.color = Color.green;
+        // GetComponent<CreateObjects>().setBestPosition(position);
         placed = true;
         return true;
     }

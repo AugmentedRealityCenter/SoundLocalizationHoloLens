@@ -15,6 +15,7 @@ public class CreateObjects : MonoBehaviour
     private MicrophoneManager microphoneManager;
     private AudioSource dictationAudio;
     private Vector3 speechBubblePos;
+    private Vector3 bestPosition;
 
     void Start()
     {
@@ -22,8 +23,8 @@ public class CreateObjects : MonoBehaviour
         //This needs to be scraped from server at some point
         url = "http://172.25.53.167:8000/sounds.json";
         soundObjects = new List<GameObject>();
-        soundThreshold = 2000;
-
+        soundThreshold = 1000;
+        bestPosition = new Vector3(0, 0, 0);
         //These three components are needed to record speech
         dictationAudio = gameObject.GetComponent<AudioSource>();
         microphoneManager = GetComponent<MicrophoneManager>();
@@ -267,4 +268,15 @@ public class CreateObjects : MonoBehaviour
         }
         return null;
     }
+
+    public void setBestPosition(Vector3 pos)
+    {
+        bestPosition = pos;
+    }
+
+    public Vector3 getBestPosition()
+    {
+        return bestPosition;
+    }
+
 }
