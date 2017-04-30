@@ -21,9 +21,9 @@ public class SpeechText : MonoBehaviour {
    void Start () {
         currentText = "Microphone is Recording";
         bottom = false;
-        middle = true;
+        middle = false;
         top = false;
-        speechBubble = false;
+        speechBubble = true;
         createObjects = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CreateObjects>();
 	}
 	
@@ -63,18 +63,22 @@ public class SpeechText : MonoBehaviour {
             moveTowardsPosition(temp + gazeDirection);
             transform.TransformDirection(gazeDirection);
         }
-        else if(speechBubble && soundObject == null) //If speech bubble is selected and a sound object exists
+        else if(speechBubble) //If speech bubble is selected and a sound object exists
         {
-            soundObject = createObjects.getFirstObject();
-            if(soundObject != null)
+            // soundObject = createObjects.getFirstObject();
+            // if(soundObject != null)
+            // {
+            // transform.position = soundObject.transform.position;
+            // Debug.Log("SOUNDOBJECT POSITION" + soundObject.transform.position);
+            // }
+            Debug.Log("speech bubble mode");
+            if (!(createObjects.getBestPosition() == (new Vector3(0, 0, 0))))
             {
-                transform.position = soundObject.transform.position;
-                Debug.Log("SOUNDOBJECT POSITION" + soundObject.transform.position);
+                transform.position = createObjects.getBestPosition();
             }
             else
             {
                 moveTowardsPosition(headPosition + gazeDirection);
-                transform.TransformDirection(gazeDirection);
                 transform.TransformDirection(gazeDirection);
             }
 

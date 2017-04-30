@@ -19,7 +19,7 @@ public class SoundObject : MonoBehaviour
     {
         timer = 0;
         GetComponent<Renderer>().transform.localScale = new Vector3(0.25F, 0.25F, 0.25F);
-        timeToLive = 5;
+        timeToLive = 10;
         snappedToMask = false;
         timeAlive = 0;
         placed = false;
@@ -94,6 +94,8 @@ public class SoundObject : MonoBehaviour
         transform.position = position;
         GetComponent<Renderer>().material.color = Color.green;
         // GetComponent<CreateObjects>().setBestPosition(position);
+        CreateObjects createObjects = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CreateObjects>();
+        createObjects.setBestPosition(position);
         placed = true;
         return true;
     }
@@ -150,6 +152,8 @@ public class SoundObject : MonoBehaviour
     {
         if (timer > timeToLive)
         {
+            CreateObjects createObjects = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CreateObjects>();
+            createObjects.setBestPosition(new Vector3(0, 0, 0), true);
             Destroy(gameObject, .5f);
         }
     }

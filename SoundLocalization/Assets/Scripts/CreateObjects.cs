@@ -269,14 +269,23 @@ public class CreateObjects : MonoBehaviour
         return null;
     }
 
-    public void setBestPosition(Vector3 pos)
-    {
-        bestPosition = pos;
-    }
-
     public Vector3 getBestPosition()
     {
         return bestPosition;
     }
+    public void setBestPosition(Vector3 pos)
+    {
+        if(bestPosition == (new Vector3(0,0,0)))
+        {
+            bestPosition = pos;
+        }
+    }
 
+    public void setBestPosition(Vector3 pos, bool onDestroy)
+    {
+        if (!(bestPosition == (new Vector3(0, 0, 0)) && onDestroy))
+        {
+            bestPosition = pos;
+        }
+    }
 }
