@@ -19,11 +19,12 @@ public class SoundObject : MonoBehaviour
     {
         timer = 0;
         GetComponent<Renderer>().transform.localScale = new Vector3(0.25F, 0.25F, 0.25F);
-        timeToLive = 10;
+        timeToLive = 15;
         snappedToMask = false;
         timeAlive = 0;
         placed = false;
         originalPosition = new Vector3(0, 0, 0);
+        GetComponent<Renderer>().enabled = false;
     }
 
     // Update is called once per frame
@@ -92,8 +93,8 @@ public class SoundObject : MonoBehaviour
         // We have found a surface.  Set position and surfaceNormal.
         position = centerHit.point;
         transform.position = position;
-        GetComponent<Renderer>().material.color = Color.green;
-        // GetComponent<CreateObjects>().setBestPosition(position);
+        // Uncomment next line for debugging purposes to see if a sound snaps to a mask
+        // GetComponent<Renderer>().material.color = Color.green;
         CreateObjects createObjects = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CreateObjects>();
         createObjects.setBestPosition(position);
         placed = true;
@@ -154,7 +155,7 @@ public class SoundObject : MonoBehaviour
         {
             CreateObjects createObjects = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CreateObjects>();
             createObjects.setBestPosition(new Vector3(0, 0, 0), true);
-            Destroy(gameObject, .5f);
+            Destroy(gameObject);
         }
     }
 }

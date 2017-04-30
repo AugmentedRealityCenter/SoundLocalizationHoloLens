@@ -65,12 +65,6 @@ public class SpeechText : MonoBehaviour {
         }
         else if(speechBubble) //If speech bubble is selected and a sound object exists
         {
-            // soundObject = createObjects.getFirstObject();
-            // if(soundObject != null)
-            // {
-            // transform.position = soundObject.transform.position;
-            // Debug.Log("SOUNDOBJECT POSITION" + soundObject.transform.position);
-            // }
             Debug.Log("speech bubble mode");
             if (!(createObjects.getBestPosition() == (new Vector3(0, 0, 0))))
             {
