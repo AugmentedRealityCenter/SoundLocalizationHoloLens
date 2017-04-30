@@ -38,10 +38,10 @@ public class CreateObjects : MonoBehaviour
 
         //This will check to see if there is a hologram out of view
         //If there is, it will cause the notification object to point towards the hologram
-        checkObjects();
-        if (tempSphere != null && notificationObject != null)
+        if (isTextOutOfView() && notificationObject != null)
         {
-            notificationObject.transform.LookAt(tempSphere.transform);
+            GameObject textBackground = GameObject.FindGameObjectWithTag("TextBackground");
+            notificationObject.transform.LookAt(textBackground.transform);
         }
 
         //Go through JSON information and generate holograms
@@ -153,6 +153,34 @@ public class CreateObjects : MonoBehaviour
     }
 
     /// <summary>
+    /// Determines if the text is out of view of the user
+    /// If it is out of the view, a notification object will be created
+    /// </summary>
+    /// <returns>True if out of view. False Otherwise</returns>
+    private bool isTextOutOfView()
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        //Used to get bounds of the sphere
+        GameObject obj = GameObject.FindGameObjectWithTag("TextBackground");
+        if (obj == null) return false;
+        Collider objCollider = obj.GetComponent<Collider>();
+        //If text is not visible, do not delete the arrow
+        if (!GeometryUtility.TestPlanesAABB(planes, objCollider.bounds))
+        {
+            //If notificationObject does not exist, generate arrow that points to sphere out of view
+            if (notificationObject == null)
+            {
+                generateNotification(obj);
+            }
+            return true;
+        }
+
+        Destroy(notificationObject);
+        return false;
+
+    }
+
+    /// <summary>
     /// Creates a sphere at position pos relative to user
     /// </summary>
     /// <param name="pos">position of the sound in the real world</param>
@@ -190,7 +218,7 @@ public class CreateObjects : MonoBehaviour
     /// </returns>
     private bool checkForSound(int firstFrameID)
     {
-
+        soundObjects.RemoveAll(item => item == null);
         foreach (GameObject o in soundObjects)
         {
             //If object is found to already exist
