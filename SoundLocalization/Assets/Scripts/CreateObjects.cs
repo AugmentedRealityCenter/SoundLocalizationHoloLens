@@ -303,10 +303,10 @@ public class CreateObjects : MonoBehaviour
     }
     public void setBestPosition(Vector3 pos)
     {
-        if(bestPosition == (new Vector3(0,0,0)))
-        {
+        // if(bestPosition == (new Vector3(0,0,0)))
+        // {
             bestPosition = pos;
-        }
+        // }
     }
 
     public void setBestPosition(Vector3 pos, bool onDestroy)

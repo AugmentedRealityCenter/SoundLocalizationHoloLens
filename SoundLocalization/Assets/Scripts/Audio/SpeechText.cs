@@ -59,7 +59,7 @@ public class SpeechText : MonoBehaviour {
         }
         else if (top)
         {
-            Vector3 temp = new Vector3(headPosition.x, headPosition.y + 0.5f, headPosition.z);
+            Vector3 temp = new Vector3(headPosition.x, headPosition.y + 0.75f, headPosition.z);
             moveTowardsPosition(temp + gazeDirection);
             transform.TransformDirection(gazeDirection);
         }

@@ -153,8 +153,10 @@ public class SoundObject : MonoBehaviour
     {
         if (timer > timeToLive)
         {
-            CreateObjects createObjects = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CreateObjects>();
-            createObjects.setBestPosition(new Vector3(0, 0, 0), true);
+            // Uncomment the following code if you wish to make the speech text more usable
+            // CreateObjects createObjects = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CreateObjects>();
+            // createObjects.setBestPosition(new Vector3(0, 0, 0), true);
+
             Destroy(gameObject);
         }
     }
