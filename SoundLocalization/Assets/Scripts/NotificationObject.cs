@@ -8,8 +8,9 @@ public class NotificationObject : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Renderer>().
-        transform.localScale = new Vector3(0.05F, 0.05F, 0.05F);
+        transform.SetParent(GameObject.FindGameObjectWithTag("MainCamera").transform);
+        transform.localScale = new Vector3(0.025F, 0.025F, 0.025F);
+
     }
 
     // Update is called once per frame
@@ -19,7 +20,10 @@ public class NotificationObject : MonoBehaviour
         var gazeDirection = Camera.main.transform.forward;
 
         //Ensure the object is always in the middle of the user's screen
-        transform.position = headPosition + gazeDirection;
+        Vector3 v3Pos = new Vector3(0, -0.4f, 3);
+        transform.localPosition = v3Pos;
+        //transform.position = headPosition + gazeDirection + new Vector3(0.025f, 0.025f, 0); 
+        //transform.position = headPosition + new Vector3(0, 1f, 0.25f);
         transform.TransformDirection(gazeDirection);
     }
 

@@ -14,14 +14,17 @@ public class CreateObjects : MonoBehaviour
     private GameObject tempSphere;
     private MicrophoneManager microphoneManager;
     private AudioSource dictationAudio;
+    private Vector3 speechBubblePos;
+    private Vector3 bestPosition;
 
     void Start()
     {
+        speechBubblePos = Camera.main.transform.position;
         //This needs to be scraped from server at some point
-        url = "http://172.25.52.54:8000/sounds.json";
+        url = "http://172.25.53.167:8000/sounds.json";
         soundObjects = new List<GameObject>();
         soundThreshold = 1000;
-
+        bestPosition = new Vector3(0, 0, 0);
         //These three components are needed to record speech
         dictationAudio = gameObject.GetComponent<AudioSource>();
         microphoneManager = GetComponent<MicrophoneManager>();
@@ -35,10 +38,10 @@ public class CreateObjects : MonoBehaviour
 
         //This will check to see if there is a hologram out of view
         //If there is, it will cause the notification object to point towards the hologram
-        checkObjects();
-        if (tempSphere != null && notificationObject != null)
+        if (isTextOutOfView() && notificationObject != null)
         {
-            notificationObject.transform.LookAt(tempSphere.transform);
+            GameObject textBackground = GameObject.FindGameObjectWithTag("TextBackground");
+            notificationObject.transform.LookAt(textBackground.transform);
         }
 
         //Go through JSON information and generate holograms
@@ -69,7 +72,7 @@ public class CreateObjects : MonoBehaviour
         {
             Debug.Log("SHELVAR WWW Error: " + www.error);
         }
-        
+
     }
 
     /// <summary>
@@ -150,6 +153,34 @@ public class CreateObjects : MonoBehaviour
     }
 
     /// <summary>
+    /// Determines if the text is out of view of the user
+    /// If it is out of the view, a notification object will be created
+    /// </summary>
+    /// <returns>True if out of view. False Otherwise</returns>
+    private bool isTextOutOfView()
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        //Used to get bounds of the sphere
+        GameObject obj = GameObject.FindGameObjectWithTag("TextBackground");
+        if (obj == null) return false;
+        Collider objCollider = obj.GetComponent<Collider>();
+        //If text is not visible, do not delete the arrow
+        if (!GeometryUtility.TestPlanesAABB(planes, objCollider.bounds))
+        {
+            //If notificationObject does not exist, generate arrow that points to sphere out of view
+            if (notificationObject == null)
+            {
+                generateNotification(obj);
+            }
+            return true;
+        }
+
+        Destroy(notificationObject);
+        return false;
+
+    }
+
+    /// <summary>
     /// Creates a sphere at position pos relative to user
     /// </summary>
     /// <param name="pos">position of the sound in the real world</param>
@@ -187,11 +218,11 @@ public class CreateObjects : MonoBehaviour
     /// </returns>
     private bool checkForSound(int firstFrameID)
     {
-
+        soundObjects.RemoveAll(item => item == null);
         foreach (GameObject o in soundObjects)
         {
             //If object is found to already exist
-            if(firstFrameID == o.GetComponent<SoundObject>().getFirstFrameID())
+            if (firstFrameID == o.GetComponent<SoundObject>().getFirstFrameID())
             {
                 return true;
             }
@@ -202,15 +233,24 @@ public class CreateObjects : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets th eimcrophone is conditions require it to be reset
+    /// Resets the microphone if conditions require it to be reset
     /// </summary>
     private void resetMicrophone()
     {
-        if (microphoneManager.speechText.GetComponent<TextMesh>().text.Equals("Speech has ended."))
+        if(microphoneManager != null)
         {
+            if (microphoneManager.speechText.GetComponent<TextMesh>().text.Equals("Speech has ended."))
+            {
+                microphoneManager = GetComponent<MicrophoneManager>();
+                dictationAudio.clip = microphoneManager.StartRecording();
+            }
+        } else
+        {
+            dictationAudio = gameObject.GetComponent<AudioSource>();
             microphoneManager = GetComponent<MicrophoneManager>();
             dictationAudio.clip = microphoneManager.StartRecording();
         }
+        
     }
 
     ///<summary>
@@ -227,6 +267,53 @@ public class CreateObjects : MonoBehaviour
         else
         {
             Debug.Log("WWW Error: " + www.error);
+        }
+    }
+
+    /// <summary>
+    /// Gets the location of the first object in the soundLocations array
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 getFirstPosition()
+    {
+        Vector3 returnPosition = Camera.main.transform.position;
+        if (objs != null)
+        {
+            //lists of all sounds, loudness values, and first frame IDs
+            List<Vector3> soundLocations = objs.getPositions();
+            if(soundLocations.ToArray().Length > 0)
+                returnPosition = soundLocations[0];
+           
+        }
+        return returnPosition;
+    }
+
+    public SoundObject getFirstObject()
+    {
+        if(soundObjects.Count>0)
+        {
+            return soundObjects[0].GetComponent<SoundObject>();
+        }
+        return null;
+    }
+
+    public Vector3 getBestPosition()
+    {
+        return bestPosition;
+    }
+    public void setBestPosition(Vector3 pos)
+    {
+        // if(bestPosition == (new Vector3(0,0,0)))
+        // {
+            bestPosition = pos;
+        // }
+    }
+
+    public void setBestPosition(Vector3 pos, bool onDestroy)
+    {
+        if (!(bestPosition == (new Vector3(0, 0, 0)) && onDestroy))
+        {
+            bestPosition = pos;
         }
     }
 }
